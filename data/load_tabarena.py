@@ -1,14 +1,14 @@
-"""Carregamento padronizado dos 9 datasets do TabArena-v0.1 (versao graduacao).
+"""Carregamento padronizado dos 9 datasets do TabArena-v0.1.
 
-Os 9 datasets sao selecionados a partir dos 51 datasets curados do TabArena-v0.1
-(NeurIPS 2025), estratificados por regime de tamanho. Cada dataset e carregado
+Os 9 datasets são selecionados a partir dos 51 datasets curados do TabArena-v0.1
+(NeurIPS 2025), estratificados por regime de tamanho. Cada dataset é carregado
 via OpenML, com cache local para evitar download repetido.
 
 Para a lista oficial de task IDs do TabArena, consulte:
     https://tabarena.ai
     https://github.com/autogluon/tabarena
 
-A constante RECOMMENDED_TASK_IDS abaixo contem 9 IDs estratificados por tamanho
+A constante RECOMMENDED_TASK_IDS abaixo contém 9 IDs estratificados por tamanho
 (3 small + 3 medium + 3 large). Caso a lista oficial seja atualizada, basta
 substituir os IDs aqui.
 """
@@ -39,11 +39,11 @@ RECOMMENDED_TASK_IDS: list[int] = [
     # 3 large (n >= 10000): adult, Bioresponse, Higgs (subset)
     7592, 9910, 3917,
 ]
-"""Lista provisoria de 9 task IDs do OpenML, estratificados em 3 small + 3 medium + 3 large.
+"""Lista provisória de 9 task IDs do OpenML, estratificados em 3 small + 3 medium + 3 large.
 
 Recomenda-se ao iniciar o experimento confirmar com `summarize()` que cada ID
 retorna efetivamente o regime esperado, e substituir os IDs caso a lista
-oficial do TabArena-v0.1 sofra atualizacao.
+oficial do TabArena-v0.1 sofra atualização.
 """
 
 
@@ -82,7 +82,7 @@ class TabularDataset:
 
 
 def classify_regime(n_samples: int) -> str:
-    """Retorna 'small', 'medium' ou 'large' conforme o numero de amostras."""
+    """Retorna 'small', 'medium' ou 'large' conforme o número de amostras."""
     if n_samples < REGIME_THRESHOLDS["small"]:
         return "small"
     if n_samples < REGIME_THRESHOLDS["medium"]:

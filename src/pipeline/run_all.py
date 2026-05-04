@@ -1,8 +1,8 @@
 """Executa o pipeline completo: para cada dataset, treina e avalia todos os modelos.
 
-Versao graduacao: itera sobre 9 datasets do TabArena (3 small + 3 medium + 3 large),
-treina os 3 baselines (LightGBM/XGBoost/CatBoost via pytabkit) e, opcionalmente,
-o modelo do grupo (`build_group_model`).
+Itera sobre 9 datasets do TabArena (3 small + 3 medium + 3 large), treina os
+3 baselines (LightGBM/XGBoost/CatBoost via pytabkit) e, opcionalmente, o
+modelo do grupo (`build_group_model`).
 
 Uso:
     python -m src.pipeline.run_all --seed 42 --output results/raw.csv
@@ -30,7 +30,7 @@ def parse_args() -> argparse.Namespace:
         "--output",
         type=Path,
         default=Path("results/raw.csv"),
-        help="caminho do CSV de saida",
+        help="caminho do CSV de saída",
     )
     parser.add_argument(
         "--task-ids",

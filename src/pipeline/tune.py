@@ -1,8 +1,8 @@
-"""Busca de hiperparametros com Optuna em validacao cruzada (CV) no treino.
+"""Busca de hiperparâmetros com Optuna em validação cruzada (CV) no treino.
 
-Implementacao minimalista que serve como ponto de partida. Cada grupo deve
+Implementação minimalista que serve como ponto de partida. Cada grupo deve
 adaptar o `search_space` para o seu modelo. Para baselines do `pytabkit` que
-ja vem com defaults meta-tunados, o tuning pode ser opcional.
+já vêm com defaults meta-tunados, o tuning pode ser opcional.
 """
 
 from __future__ import annotations
@@ -29,13 +29,13 @@ def tune(
     cv_folds: int = DEFAULT_CV_FOLDS,
     scoring: str = DEFAULT_SCORING,
 ) -> tuple[dict[str, Any], float]:
-    """Roda Optuna no espaco de busca passado e retorna (melhor_params, melhor_score).
+    """Roda Optuna no espaço de busca passado e retorna (melhor_params, melhor_score).
 
     Args:
-        estimator_factory: funcao que recebe um dict de hiperparametros e
-            retorna um estimador sklearn-compativel.
-        search_space: funcao que recebe um trial e retorna o dict de
-            hiperparametros amostrados.
+        estimator_factory: função que recebe um dict de hiperparâmetros e
+            retorna um estimador sklearn-compatível.
+        search_space: função que recebe um trial e retorna o dict de
+            hiperparâmetros amostrados.
         X, y: dados de treino (a CV roda dentro deste conjunto).
     """
     cv = StratifiedKFold(n_splits=cv_folds, shuffle=True, random_state=seed)

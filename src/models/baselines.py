@@ -1,8 +1,8 @@
-"""Baselines obrigatorios: LightGBM, XGBoost e CatBoost.
+"""Baselines obrigatórios: LightGBM, XGBoost e CatBoost.
 
-Por padrao usamos as variantes meta-tunadas do `pytabkit` (sufixo `_TD`), que
-trazem hiperparametros default fortes obtidos por meta-aprendizado em centenas
-de datasets (Holzmuller et al., NeurIPS 2024).
+Por padrão usamos as variantes meta-tunadas do `pytabkit` (sufixo `_TD`), que
+trazem hiperparâmetros default fortes obtidos por meta-aprendizado em centenas
+de datasets (Holzmüller et al., NeurIPS 2024).
 """
 
 from __future__ import annotations

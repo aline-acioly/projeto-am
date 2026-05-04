@@ -1,15 +1,15 @@
-"""Smoke test: roda baselines em um dataset pequeno (breast_cancer) e valida saidas.
+"""Smoke test: roda baselines em um dataset pequeno (breast_cancer) e valida saídas.
 
-O objetivo deste teste e detectar problemas de instalacao e incompatibilidade
-de dependencias antes que o aluno comece o experimento completo. Nao testa
-acuracia ou correcao do modelo, apenas que cada estimador retorna predicoes.
+O objetivo deste teste é detectar problemas de instalação e incompatibilidade
+de dependências antes que o aluno comece o experimento completo. Não testa
+acurácia ou correção do modelo, apenas que cada estimador retorna predições.
 """
 
 from __future__ import annotations
 
 import matplotlib
 
-matplotlib.use("Agg")  # backend nao-interativo para CI/headless
+matplotlib.use("Agg")  # backend não-interativo para CI/headless
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -25,7 +25,7 @@ from src.reports.plots import bar_metric_by_model, boxplot_metric_by_model
 
 @pytest.fixture(scope="module")
 def small_dataset():
-    """breast_cancer (n=569, 30 features, binario): roda em poucos segundos."""
+    """breast_cancer (n=569, 30 features, binário): roda em poucos segundos."""
     data = load_breast_cancer(as_frame=True)
     X = data.data
     y = data.target.to_numpy()

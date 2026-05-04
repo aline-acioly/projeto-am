@@ -1,4 +1,4 @@
-"""Calculo das metricas exigidas: AUC OVO, ACC, G-Mean, Cross-Entropy e tempo."""
+"""Cálculo das métricas exigidas: AUC OVO, ACC, G-Mean, Cross-Entropy e tempo."""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ class EvaluationResult:
 
 
 def g_mean_score(y_true: np.ndarray, y_pred: np.ndarray) -> float:
-    """G-Mean: media geometrica do recall por classe."""
+    """G-Mean: média geométrica do recall por classe."""
     classes = np.unique(y_true)
     recalls = []
     for c in classes:

@@ -3,7 +3,7 @@
 Regimes considerados:
     - tamanho: small (n menor que 1k), medium (1k a 10k), large (acima de 10k)
     - num_classes: binary vs. multiclass
-    - cat_share: low (menos de 25% das features sao categoricas), high (acima de 25%)
+    - cat_share: low (menos de 25% das features são categóricas), high (acima de 25%)
     - missing: yes vs. no
 """
 
@@ -43,16 +43,16 @@ def aggregate_by_regime(
     regime_col: str,
     metric_col: str = "auc_ovo",
 ) -> pd.DataFrame:
-    """Agrega a metrica por modelo e por valor do regime.
+    """Agrega a métrica por modelo e por valor do regime.
 
     Args:
         results: DataFrame com colunas dataset_id, model, <metric_col>.
         metadata: DataFrame com regimes por dataset_id.
         regime_col: coluna do regime (ex.: 'regime_size').
-        metric_col: coluna da metrica a agregar.
+        metric_col: coluna da métrica a agregar.
 
     Returns:
-        DataFrame indexado por (regime, model) com media e desvio da metrica.
+        DataFrame indexado por (regime, model) com média e desvio da métrica.
     """
     if "task_id" in metadata.columns and "task_id" not in results.columns:
         results = results.rename(columns={"dataset_id": "task_id"})

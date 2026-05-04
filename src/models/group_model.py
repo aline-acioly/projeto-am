@@ -1,18 +1,18 @@
-"""Placeholder do modelo principal do grupo (versao graduacao).
+"""Placeholder do modelo principal do grupo.
 
-Cada grupo deve substituir `build_group_model` pelo wrapper sklearn-compativel
-do modelo atribuido. A lista de modelos atribuiveis na graduacao foi enxugada
-para 7 modelos CPU-friendly.
+Cada grupo deve substituir `build_group_model` pelo wrapper sklearn-compatível
+do modelo atribuído. A lista de modelos atribuíveis está descrita no README e
+todos rodam em CPU.
 
-Padrao esperado: a funcao retorna um estimador com .fit(X, y) e .predict_proba(X).
-Se o modelo nao tem API sklearn, envolva em sklearn.base.BaseEstimator.
+Padrão esperado: a função retorna um estimador com .fit(X, y) e .predict_proba(X).
+Se o modelo não tem API sklearn, envolva em sklearn.base.BaseEstimator.
 """
 
 from __future__ import annotations
 
 
 def build_group_model(seed: int = 42):
-    """Substitua o corpo desta funcao pelo modelo do seu grupo.
+    """Substitua o corpo desta função pelo modelo do seu grupo.
 
     Exemplos (descomente o que se aplicar ao seu grupo):
 

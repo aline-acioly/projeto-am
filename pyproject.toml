@@ -1,12 +1,12 @@
 [project]
 name = "projeto-final-am-grad"
 version = "0.1.0"
-description = "Repositorio-template do Projeto Final de Aprendizagem de Maquina (graduacao)"
+description = "Repositório-template do Projeto Final de Aprendizagem de Máquina"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 license = { text = "MIT" }
 authors = [
-    { name = "Disciplina de Aprendizagem de Maquina, Graduacao" },
+    { name = "Disciplina de Aprendizagem de Máquina" },
 ]
 
 dependencies = [
@@ -23,7 +23,7 @@ dependencies = [
     "xgboost>=2.0,<4.0",
     "catboost>=1.2,<2.0",
 
-    # modelos recentes (lista enxuta da graduacao, todos CPU-friendly)
+    # modelos recentes (todos CPU-friendly)
     "xrfm>=0.4,<1.0",
     "deeptab>=1.5,<2.0",
     "pytorch-frame>=0.2,<1.0",

@@ -1,11 +1,10 @@
-"""Graficos descritivos para a versao graduacao.
+"""Gráficos descritivos a partir do CSV bruto de resultados.
 
-Quatro funcoes que geram figuras matplotlib a partir do CSV bruto de resultados
-(`results/raw.csv`) produzido por `src.pipeline.run_all`. Substituem o papel
-que o `stats.py` (autorank/baycomp) tinha na versao da pos-graduacao.
+Quatro funções que geram figuras matplotlib a partir do CSV bruto de resultados
+(`results/raw.csv`) produzido por `src.pipeline.run_all`.
 
-Cada funcao retorna `matplotlib.figure.Figure`. Se `output_path` for passado,
-o grafico tambem e salvo em PNG.
+Cada função retorna `matplotlib.figure.Figure`. Se `output_path` for passado,
+o gráfico também é salvo em PNG.
 """
 
 from __future__ import annotations
@@ -32,7 +31,7 @@ def bar_metric_by_model(
     metric: str = "auc_ovo",
     output_path: Path | None = None,
 ) -> plt.Figure:
-    """Grafico de barras com media (+- desvio) da metrica por modelo."""
+    """Gráfico de barras com média (+/- desvio) da métrica por modelo."""
     agg = (
         raw_results.groupby("model")[metric]
         .agg(["mean", "std"])
@@ -46,9 +45,9 @@ def bar_metric_by_model(
         capsize=4,
         color=sns.color_palette("muted", n_colors=len(agg)),
     )
-    ax.set_ylabel(f"{metric} (media)")
+    ax.set_ylabel(f"{metric} (média)")
     ax.set_xlabel("modelo")
-    ax.set_title(f"Desempenho medio por modelo ({metric})")
+    ax.set_title(f"Desempenho médio por modelo ({metric})")
     plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
     fig.tight_layout()
     _save_if_requested(fig, output_path)
@@ -60,7 +59,7 @@ def boxplot_metric_by_model(
     metric: str = "auc_ovo",
     output_path: Path | None = None,
 ) -> plt.Figure:
-    """Boxplot da metrica por modelo (distribuicao ao longo dos datasets)."""
+    """Boxplot da métrica por modelo (distribuição ao longo dos datasets)."""
     fig, ax = plt.subplots(figsize=(8, 5))
     order = (
         raw_results.groupby("model")[metric]
@@ -79,7 +78,7 @@ def boxplot_metric_by_model(
         alpha=0.5,
         size=3,
     )
-    ax.set_title(f"Distribuicao de {metric} por modelo")
+    ax.set_title(f"Distribuição de {metric} por modelo")
     plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
     fig.tight_layout()
     _save_if_requested(fig, output_path)
@@ -93,7 +92,7 @@ def bar_metric_by_regime(
     metric: str = "auc_ovo",
     output_path: Path | None = None,
 ) -> plt.Figure:
-    """Barras agrupadas: media da metrica por regime e por modelo."""
+    """Barras agrupadas: média da métrica por regime e por modelo."""
     aggregated = aggregate_by_regime(
         raw_results, metadata, regime_col=regime_col, metric_col=metric
     )
@@ -105,7 +104,7 @@ def bar_metric_by_regime(
         hue="model",
         ax=ax,
     )
-    ax.set_ylabel(f"{metric} (media)")
+    ax.set_ylabel(f"{metric} (média)")
     ax.set_title(f"{metric} por {regime_col}")
     ax.legend(title="modelo", bbox_to_anchor=(1.02, 1.0), loc="upper left")
     fig.tight_layout()
