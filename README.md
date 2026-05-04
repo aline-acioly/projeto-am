@@ -30,11 +30,12 @@ A tabela abaixo indica, para cada componente, o que já está implementado e val
 | `src/reports/results_table.py` (resumos e exportação Markdown) | Pronto | Nada. |
 | `src/reports/plots.py` (barras, boxplot, regime, time vs. quality) | Pronto | Nada. |
 | `notebooks/01_eda.ipynb` até `04_analise_resultados.ipynb` | Esqueleto | Executar e adaptar; usar para gerar figuras e tabelas do relatório. |
-| `model_cards/TEMPLATE.md` | Placeholder | Copiar para `model_cards/<seu-modelo>.md` e preencher todos os campos. |
+| `model_cards/TEMPLATE.md` | Placeholder | Copiar para `model_cards/<seu-modelo>.md` e preencher as 10 seções (detalhes do modelo, uso pretendido, fatores, métricas com IC 95%, dados de avaliação, dados de treino e pré-treino, análise quantitativa, avisos e recomendações, considerações éticas, reprodutibilidade). |
 | `tests/test_pipeline.py` (smoke test) | Pronto | Nada. |
 | Tabela de seleção dos 9 datasets (no relatório) | Ação do aluno | Construir tabela com nome, task ID OpenML, n, n_features, n_classes e regime. |
-| Relatório final em PDF | Ação do aluno | Escrever conforme exigências do projeto. |
-| Slides da apresentação | Ação do aluno | Produzir conforme exigências do projeto. |
+| Relatório final em PDF | Esqueleto | Estrutura sugerida em `entregaveis/relatorio-template.pdf`. Substituir placeholders e preencher conforme as exigências da disciplina. |
+| Slides da apresentação (10 minutos: 5 + 5) | Esqueleto | Estrutura sugerida em `entregaveis/slides-template.pdf` (cerca de 12 frames, dois blocos de 5 minutos). |
+| Rubrica de avaliação | Pronto | Disponível em `entregaveis/rubrica.pdf`. Vincula a nota a entregas concretas, decompondo o esquema 40 + 50 + 10 do PDF da disciplina em critérios com pesos específicos. |
 
 ## Modelos atribuíveis aos grupos
 
