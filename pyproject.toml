@@ -23,7 +23,9 @@ dependencies = [
     "xgboost>=2.0,<4.0",
     "catboost>=1.2,<2.0",
 
-    # modelos recentes (todos CPU-friendly)
+    # modelos recentes
+    "tabpfn>=2.0,<8.0",
+    "tabicl>=2.0,<3.0",
     "xrfm>=0.4,<1.0",
     "deeptab>=1.5,<2.0",
     "pytorch-frame>=0.2,<1.0",

@@ -40,15 +40,16 @@ A tabela abaixo indica, para cada componente, o que já está implementado e val
 
 | # | Modelo | Toolkit |
 |---|---|---|
-| 1 | TabM | `pytabkit` |
-| 2 | RealMLP | `pytabkit` |
-| 3 | FT-Transformer | `pytabkit` |
-| 4 | EBM | `interpret` |
-| 5 | xRFM | `xrfm` |
-| 6 | ModernNCA | `LAMDA-Tabular/TALENT` |
+| 1 | TabPFN-2.5 | `tabpfn` |
+| 2 | TabICL v2 | `tabicl` |
+| 3 | TabM | `pytabkit` |
+| 4 | ModernNCA | `LAMDA-Tabular/TALENT` |
+| 5 | RealMLP | `pytabkit` |
+| 6 | xRFM | `xrfm` |
 | 7 | Mambular | `deeptab` |
-
-Todos os modelos atribuíveis rodam em laptop comum sem GPU.
+| 8 | FT-Transformer | `pytabkit` ou `deeptab` |
+| 9 | EBM | `interpret` |
+| 10 | Trompt | `pytorch-frame` |
 
 ## Quickstart
 
@@ -131,7 +132,7 @@ projeto-final-AM-grad/
 
 ## Licenças
 
-Todas as bibliotecas utilizadas têm licenças permissivas (MIT, Apache 2.0).
+Todas as bibliotecas utilizadas têm licenças permissivas (MIT, Apache 2.0). A única exceção é o modelo TabPFN-2.5, cujos pesos são distribuídos sob licença não-comercial; o uso acadêmico em sala está explicitamente autorizado.
 
 ## Suporte
 

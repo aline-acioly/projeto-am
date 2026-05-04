@@ -241,6 +241,9 @@ Cuidado: alguns frameworks introduzem pequenas variações mesmo com seed fixa (
 **Treino do modelo do grupo demora muito.**
 - Em laptop sem GPU, modelos baseados em redes neurais (TabM, RealMLP, FT-Transformer, Mambular) podem levar vários minutos por dataset. Comece testando em datasets pequenos antes de rodar todos os 9.
 
+**TabPFN ou TabICL pedem GPU e você só tem CPU.**
+- TabICL roda em CPU sem problemas. TabPFN roda em CPU para datasets pequenos (menos de 1.000 amostras); para maiores, use Google Colab ou outro ambiente com GPU.
+
 ---
 
 ## Referências
