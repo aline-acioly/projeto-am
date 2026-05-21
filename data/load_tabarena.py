@@ -30,14 +30,13 @@ openml.config.set_root_cache_directory(str(CACHE_DIR))
 
 REGIME_THRESHOLDS = {"small": 1_000, "medium": 10_000}
 
-
 RECOMMENDED_TASK_IDS: list[int] = [
-    # 3 small (n < 1000): wine, diabetes, credit-g
-    11, 37, 31,
-    # 3 medium (1000 <= n < 10000): mfeat-fourier, electricity (subset), PC4
-    14, 219, 3902,
-    # 3 large (n >= 10000): adult, Bioresponse, Higgs (subset)
-    7592, 9910, 3917,
+    # 3 small (n < 1000): blood-transfusion, diabetes, balance-scale
+    10101, 37, 11,
+    # 3 medium (1000–10000): credit-g, phoneme, cmc
+    31, 9952, 23,
+    # 3 large (n > 10000): adult, bank-marketing, connect-4
+    7592, 14965, 146195,
 ]
 """Lista provisória de 9 task IDs do OpenML, estratificados em 3 small + 3 medium + 3 large.
 
