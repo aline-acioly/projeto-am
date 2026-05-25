@@ -49,4 +49,24 @@ def tune(
     sampler = optuna.samplers.TPESampler(seed=seed)
     study = optuna.create_study(direction="maximize", sampler=sampler)
     study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
-    return study.best_params, float(study.best_value)
+    return study.best_params, float(study.best_value), study
+
+
+def tabm_search_space(trial: optuna.Trial) -> dict[str, Any]:
+    return {
+        "num_emb_type": trial.suggest_categorical(
+            "num_emb_type", ["none", "pbld", "plr", "lt"]
+        ),
+        "n_estimators": trial.suggest_int("n_estimators", 8, 64, step=8),
+        "max_epochs": trial.suggest_int("max_epochs", 100, 300, step=50),
+    }
+
+
+def tabm_factory(params: dict[str, Any]):
+    from pytabkit import TabM_D_Classifier
+    return TabM_D_Classifier(
+        num_emb_type=params["num_emb_type"],
+        n_estimators=params["n_estimators"],
+        max_epochs=params["max_epochs"],
+        random_state=42,
+    )
