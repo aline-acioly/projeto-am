@@ -60,7 +60,7 @@ def main() -> None:
 
         factories: dict[str, callable] = dict(BASELINE_FACTORIES)
         if args.include_group_model:
-            factories["group_model"] = build_group_model
+            factories["tabm"] = build_group_model
 
         for model_name, factory in factories.items():
             estimator = factory(args.seed)
