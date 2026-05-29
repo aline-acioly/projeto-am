@@ -1,0 +1,9 @@
+task_id,dataset,regime,best_auc_cv,num_emb_type,tabm_k,n_epochs
+10101,blood-transfusion-service-center,small,0.7617045886075948,none,24,200
+37,diabetes,small,0.818666937614306,none,32,150
+11,balance-scale,small,0.9880312862950058,lt,56,150
+31,credit-g,medium,0.779251700680272,pbld,56,150
+9952,phoneme,medium,0.9474932666573956,pbld,48,150
+23,cmc,medium,0.7297518626661529,none,24,200
+7592,adult,large,0.9141394030158038,lt,48,100
+14965,bank-marketing,large,0.9391515918246999,lt,48,100
