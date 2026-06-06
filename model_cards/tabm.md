@@ -153,7 +153,7 @@ Tabela agregada nos 9 datasets do TabArena-v0.1. IC 95% via bootstrap (1.000 rea
 - **Hash do commit:** `43bec02fd54fb776cfbcfefbb8796a330432a2a9`
 - **Comandos:**
   ```bash
-  git clone <repo>
+  git clone https://github.com/aline-acioly/projeto-am.git
   cd projeto-am
   uv sync
   uv run python -m src.pipeline.run_all --include-group-model --seed 42
