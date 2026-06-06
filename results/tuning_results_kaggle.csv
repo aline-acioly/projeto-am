@@ -6,4 +6,5 @@ task_id,dataset,regime,best_auc_cv,num_emb_type,tabm_k,n_epochs
 9952,phoneme,medium,0.9474932666573956,pbld,48,150
 23,cmc,medium,0.7297518626661529,none,24,200
 7592,adult,large,0.9141394030158038,lt,48,100
-14965,bank-marketing,large,0.9391515918246999,lt,48,100
+14965,bank-marketing,large,0.9391515918247,lt,48,100
+146195,connect-4,large,0.9259185165010759,pbld,24,50
