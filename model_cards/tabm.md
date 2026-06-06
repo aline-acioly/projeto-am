@@ -15,6 +15,11 @@
 - **Complexidade computacional:** O(n · p · k) em treino, onde k=32 cabeças; inferência O(p · k) por amostra
 - **Toolkit / dependências:** pytabkit 1.7.3, torch 2.7.1, scikit-learn 1.8.0
 - **Hiperparâmetros principais:** `k` (número de membros, padrão 32), `lr` ∈ [1e-4, 1e-2], `weight_decay`, `hidden_sizes`, `dropout` — defaults TD usados neste projeto
+- **Melhores hiperparâmetros encontrados (Optuna, 9 datasets, 5-fold CV):**
+  - `num_emb_type`: pbld em 4/9 datasets, lt em 3/9, none em 2/9 — pbld dominante em datasets com features numéricas puras
+  - `tabm_k`: 24–56 (small: 56, medium: 48, large: 24) — datasets maiores convergem com menos cabeças
+  - `n_epochs`: 50–200 (connect-4: 50 épocas suficientes com GPU; datasets small/medium: 150–200)
+  - Detalhes completos em `results/tuning_results_kaggle.csv`
 
 ---
 
@@ -146,7 +151,10 @@ Tabela agregada nos 9 datasets do TabArena-v0.1. IC 95% via bootstrap (1.000 rea
   uv sync
   uv run python -m src.pipeline.run_all --include-group-model --seed 42
   jupyter nbconvert --to notebook --execute notebooks/04_analise_resultados.ipynb
+  # Análise do tuning (curvas de convergência e sensibilidade):
+  jupyter nbconvert --to notebook --execute notebooks/05_analise_tuning.ipynb
   ```
+- **Resultados de tuning pré-computados:** `results/tuning_results_kaggle.csv` e `results/tuning_trials_kaggle.csv` (9 datasets, Kaggle T4 GPU para connect-4)
 
 ---
 
