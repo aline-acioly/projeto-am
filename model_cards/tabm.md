@@ -150,7 +150,7 @@ Tabela agregada nos 9 datasets do TabArena-v0.1. IC 95% via bootstrap (1.000 rea
 - **Ambiente:** Python 3.11, dependências fixadas em `pyproject.toml` (uv)
 - **Hardware utilizado:** Kaggle T4 GPU notebook — Intel Xeon @ 2.00 GHz (2 vCPUs), 29 GB RAM, NVIDIA Tesla T4 16 GB VRAM
 - **Seed:** 42 em todas as etapas (split, treino, tuning)
-- **Hash do commit:** `43bec02fd54fb776cfbcfefbb8796a330432a2a9`
+- **Hash do commit:** `ab0936a`
 - **Comandos:**
   ```bash
   git clone https://github.com/aline-acioly/projeto-am.git
