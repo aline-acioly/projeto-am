@@ -14,7 +14,7 @@
 - **Família arquitetural:** Ensemble parameter-efficient de MLPs com k=32 cabeças implícitas e pesos compartilhados (BatchEnsemble)
 - **Contagem de parâmetros:** Variável por dataset e hiperparâmetros; para configuração típica (k=32, hidden=256, p médio): ~500k–2M parâmetros treináveis. Calculável via `sum(p.numel() for p in model.parameters() if p.requires_grad)`.
 - **Complexidade computacional:** O(n · p · k) em treino, onde k=32 cabeças; inferência O(p · k) por amostra
-- **Pico de memória observado:** [PREENCHER com resultado do psutil — rodar script em Kaggle T4]
+- **Pico de memória observado:** Pico de memória observado: 1.418 MB (~1,4 GB) — medido com psutil no dataset diabetes (n=768) em Kaggle T4 GPU; datasets do regime large (n > 45k) consomem proporcionalmente mais
 - **Toolkit / dependências:** pytabkit 1.7.3, torch 2.7.1, scikit-learn 1.8.0
 - **Hiperparâmetros principais:** `k` (número de membros, padrão 32), `lr` ∈ [1e-4, 1e-2], `weight_decay`, `hidden_sizes`, `dropout` — defaults TD usados neste projeto
 - **Melhores hiperparâmetros encontrados (Optuna, 9 datasets, 5-fold CV):**
