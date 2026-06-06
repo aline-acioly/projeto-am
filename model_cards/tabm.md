@@ -12,7 +12,9 @@
 - **Repositório oficial:** https://github.com/yandex-research/tabm
 - **Licença do código:** Apache 2.0
 - **Família arquitetural:** Ensemble parameter-efficient de MLPs com k=32 cabeças implícitas e pesos compartilhados (BatchEnsemble)
+- **Contagem de parâmetros:** Variável por dataset e hiperparâmetros; para configuração típica (k=32, hidden=256, p médio): ~500k–2M parâmetros treináveis. Calculável via `sum(p.numel() for p in model.parameters() if p.requires_grad)`.
 - **Complexidade computacional:** O(n · p · k) em treino, onde k=32 cabeças; inferência O(p · k) por amostra
+- **Pico de memória observado:** [PREENCHER com resultado do psutil — rodar script em Kaggle T4]
 - **Toolkit / dependências:** pytabkit 1.7.3, torch 2.7.1, scikit-learn 1.8.0
 - **Hiperparâmetros principais:** `k` (número de membros, padrão 32), `lr` ∈ [1e-4, 1e-2], `weight_decay`, `hidden_sizes`, `dropout` — defaults TD usados neste projeto
 - **Melhores hiperparâmetros encontrados (Optuna, 9 datasets, 5-fold CV):**
@@ -29,6 +31,7 @@
 - **Casos de uso fora de escopo:** Dados não-IID, séries temporais, dados de imagem, texto ou áudio
 - **Usuários pretendidos:** Pesquisadores e praticantes em problemas tabulares com benchmarks padronizados
 - **Faixa de n suportada:** 1.000–500.000 amostras; GPU recomendada para n > 20.000
+- **Faixa de p suportada:** até ~1.000 features após codificação; testado com 4–42 features neste projeto
 - **Condições operacionais:** CPU (8 GB RAM) para datasets pequenos e médios; GPU para large
 
 ---
@@ -135,7 +138,9 @@ Tabela agregada nos 9 datasets do TabArena-v0.1. IC 95% via bootstrap (1.000 rea
 
 - TabM é caixa-preta; não deve ser usado em decisões de alto impacto sem camada de XAI (SHAP, LIME)
 - O dataset adult contém atributos sensíveis (sexo, raça); modelos treinados nele devem ser auditados para viés antes de qualquer uso real
-- Impacto ambiental: tempo total de execução ≈ 5.785 s (≈ 1,6 h de CPU) nos 9 datasets
+- **Fairness por classe:** G-Mean médio do TabM = 0,694 (± 0,121) — penaliza desempenho desigual entre classes. Datasets com maior desbalanceamento (blood-transfusion, adult) apresentaram G-Mean abaixo de 0,80, indicando predição mais fraca para a classe minoritária. Recomenda-se avaliar recall por classe antes de qualquer uso em domínios sensíveis.
+- **Recomendações de auditoria:** Comparar predições do TabM com modelo interpretável (EBM ou árvore de decisão) antes de deploy; verificar disparidade de falsos positivos entre grupos sensíveis nos datasets adult e credit-g.
+- Impacto ambiental: tempo total de execução ≈ 5.785 s (≈ 1,6 h) nos 9 datasets em Kaggle T4 GPU
 - Escopo deste trabalho: exclusivamente acadêmico
 
 ---
@@ -143,7 +148,9 @@ Tabela agregada nos 9 datasets do TabArena-v0.1. IC 95% via bootstrap (1.000 rea
 ## 10. Reprodutibilidade
 
 - **Ambiente:** Python 3.11, dependências fixadas em `pyproject.toml` (uv)
+- **Hardware utilizado:** Kaggle T4 GPU notebook — Intel Xeon @ 2.00 GHz (2 vCPUs), 29 GB RAM, NVIDIA Tesla T4 16 GB VRAM
 - **Seed:** 42 em todas as etapas (split, treino, tuning)
+- **Hash do commit:** `43bec02fd54fb776cfbcfefbb8796a330432a2a9`
 - **Comandos:**
   ```bash
   git clone <repo>
