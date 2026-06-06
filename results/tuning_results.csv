@@ -1,4 +1,0 @@
-task_id,dataset,best_auc_cv,num_emb_type,tabm_k,n_epochs
-10101,blood-transfusion-service-center,0.765946668828011,pbld,32,100
-37,diabetes,0.7677014086348335,pbld,16,100
-11,balance-scale,0.9100052859100702,pbld,16,100
