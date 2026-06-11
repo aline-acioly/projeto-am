@@ -64,13 +64,20 @@ def main() -> None:
 
         for model_name, factory in factories.items():
             estimator = factory(args.seed)
-            metrics = fit_predict_evaluate(estimator, X_train, y_train, X_test, y_test)
-            row = {"task_id": task_id, "dataset": ds.name, "model": model_name}
-            row.update(metrics.to_dict())
-            rows.append(row)
+            metrics_test = fit_predict_evaluate(estimator, X_train, y_train, X_test, y_test)
+            row_test = {"task_id": task_id, "dataset": ds.name, "model": model_name, "split": "test"}
+            row_test.update(metrics_test.to_dict())
+            rows.append(row_test)
+
+            metrics_train = fit_predict_evaluate(estimator, X_train, y_train, X_train, y_train)
+            row_train = {"task_id": task_id, "dataset": ds.name, "model": model_name, "split": "train"}
+            row_train.update(metrics_train.to_dict())
+            rows.append(row_train)
+
             print(
-                f"[{ds.name}] {model_name}: AUC={metrics.auc_ovo:.4f}, "
-                f"ACC={metrics.accuracy:.4f}, time={metrics.fit_time_s + metrics.predict_time_s:.1f}s"
+                f"[{ds.name}] {model_name}: AUC_test={metrics_test.auc_ovo:.4f}, "
+                f"AUC_train={metrics_train.auc_ovo:.4f}, "
+                f"time={metrics_test.fit_time_s + metrics_test.predict_time_s:.1f}s"
             )
 
     pd.DataFrame(rows).to_csv(args.output, index=False)
